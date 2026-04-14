@@ -3,7 +3,7 @@
 import logging
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 logger = logging.getLogger(__name__)
 
@@ -19,12 +19,12 @@ class BaseOSINTIntegration(ABC):
         """Initialize the integration with an API key."""
         self.api_key = api_key
         self._call_count = 0
-        self._period_start = datetime.utcnow()
+        self._period_start = datetime.now(timezone.utc)
         self._cache: Dict[str, Any] = {}
 
     def _check_rate_limit(self) -> bool:
         """Check if we're within rate limits."""
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         if now - self._period_start > timedelta(seconds=self.rate_limit_period):
             self._call_count = 0
             self._period_start = now
@@ -39,7 +39,7 @@ class BaseOSINTIntegration(ABC):
     def _get_cached(self, key: str) -> Optional[Any]:
         """Get a cached result."""
         entry = self._cache.get(key)
-        if entry and datetime.utcnow() < entry["expires"]:
+        if entry and datetime.now(timezone.utc) < entry["expires"]:
             return entry["data"]
         return None
 
@@ -47,7 +47,7 @@ class BaseOSINTIntegration(ABC):
         """Cache a result with TTL."""
         self._cache[key] = {
             "data": data,
-            "expires": datetime.utcnow() + timedelta(seconds=ttl),
+            "expires": datetime.now(timezone.utc) + timedelta(seconds=ttl),
         }
 
     @abstractmethod
