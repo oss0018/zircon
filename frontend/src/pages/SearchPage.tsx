@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 import client from '../api/client'
@@ -13,15 +13,7 @@ export default function SearchPage() {
     useSearchStore()
   const [localFilters, setLocalFilters] = useState(filters)
 
-  useEffect(() => {
-    const q = searchParams.get('q')
-    if (q) {
-      setQuery(q)
-      performSearch(q)
-    }
-  }, [])
-
-  const performSearch = async (q: string) => {
+  const performSearch = useCallback(async (q: string) => {
     if (!q.trim()) return
     setLoading(true)
     try {
@@ -39,7 +31,15 @@ export default function SearchPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [filters, setLoading, setResults])
+
+  useEffect(() => {
+    const q = searchParams.get('q')
+    if (q) {
+      setQuery(q)
+      performSearch(q)
+    }
+  }, [searchParams, setQuery, performSearch])
 
   const handleSearch = (q: string) => {
     setQuery(q)

@@ -13,7 +13,7 @@ export default function FileUpload({ onSuccess }: FileUploadProps) {
   const [uploading, setUploading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const uploadFile = async (file: File) => {
+  const uploadFile = useCallback(async (file: File) => {
     setUploading(true)
     setError(null)
     const formData = new FormData()
@@ -29,7 +29,7 @@ export default function FileUpload({ onSuccess }: FileUploadProps) {
     } finally {
       setUploading(false)
     }
-  }
+  }, [onSuccess, t])
 
   const handleDrop = useCallback(
     (e: React.DragEvent<HTMLDivElement>) => {
@@ -38,7 +38,7 @@ export default function FileUpload({ onSuccess }: FileUploadProps) {
       const file = e.dataTransfer.files[0]
       if (file) uploadFile(file)
     },
-    [],
+    [uploadFile],
   )
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
