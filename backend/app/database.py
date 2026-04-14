@@ -26,28 +26,6 @@ def get_session_factory():
     return _session_factory
 
 
-# Backwards-compatible alias used by Celery tasks
-@property
-def _async_session_local():
-    return get_session_factory()
-
-
-class AsyncSessionLocalProxy:
-    """Proxy that lazily initializes the session factory."""
-    def __call__(self):
-        return get_session_factory()()
-
-    def __call_async__(self):
-        return get_session_factory()()
-
-    async def __aenter__(self):
-        self._session = get_session_factory()()
-        return await self._session.__aenter__()
-
-    async def __aexit__(self, *args):
-        return await self._session.__aexit__(*args)
-
-
 AsyncSessionLocal = get_session_factory
 
 

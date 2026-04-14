@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 import client from '../api/client'
@@ -12,18 +12,21 @@ export default function SearchPage() {
   const { query, results, total, loading, filters, setQuery, setResults, setLoading, setFilters } =
     useSearchStore()
   const [localFilters, setLocalFilters] = useState(filters)
+  const filtersRef = useRef(filters)
+  filtersRef.current = filters
 
   const performSearch = useCallback(async (q: string) => {
     if (!q.trim()) return
     setLoading(true)
+    const currentFilters = filtersRef.current
     try {
       const res = await client.post('/search', {
         query: q,
-        file_type: filters.fileType || undefined,
-        date_from: filters.dateFrom || undefined,
-        date_to: filters.dateTo || undefined,
-        project_id: filters.projectId || undefined,
-        operator: filters.operator,
+        file_type: currentFilters.fileType || undefined,
+        date_from: currentFilters.dateFrom || undefined,
+        date_to: currentFilters.dateTo || undefined,
+        project_id: currentFilters.projectId || undefined,
+        operator: currentFilters.operator,
       })
       setResults(res.data.hits || [], res.data.total || 0)
     } catch {
@@ -31,7 +34,7 @@ export default function SearchPage() {
     } finally {
       setLoading(false)
     }
-  }, [filters, setLoading, setResults])
+  }, [setLoading, setResults])
 
   useEffect(() => {
     const q = searchParams.get('q')
