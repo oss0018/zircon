@@ -14,7 +14,7 @@ passlib[bcrypt]==1.7.4
 python-multipart==0.0.9
 httpx==0.27.0
 cryptography==42.0.8
-pyclamd==0.4.1
+pyclamd==0.4.0
 python-magic==0.4.27
 PyMuPDF==1.24.4
 pandas==2.2.2
