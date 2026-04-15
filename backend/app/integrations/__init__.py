@@ -1,10 +1,10 @@
 """OSINT Integration Registry — registers and manages all available integrations.
 
 Registered services (15 total):
-  Breach & Leaks    : hibp, intelx, leakix, hudsonrock
-  Phishing & Malware: virustotal, urlhaus, phishtank, urlscan, ctxio, checkphish
-  Infrastructure    : shodan, censys, securitytrails
-  Threat Intel      : abuseipdb, alienvault
+  Breach & Leaks    (4): hibp, intelx, leakix, hudsonrock
+  Phishing & Malware(6): virustotal, urlhaus, phishtank, urlscan, ctxio, checkphish
+  Infrastructure    (3): shodan, censys, securitytrails
+  Threat Intel      (2): abuseipdb, alienvault
 """
 
 from typing import Dict, List, Optional, Type
