@@ -121,6 +121,22 @@ SERVICE_INFO: Dict[str, Dict[str, Any]] = {
         "rate_limits": "10000 requests/hour",
         "requires_key": True,
     },
+    "ctxio": {
+        "name": "CTX.io",
+        "description": "Contextual threat intelligence for URLs, domains, and IPs.",
+        "category": "Phishing & Malware",
+        "supported_query_types": ["search", "info"],
+        "rate_limits": "60 requests/minute",
+        "requires_key": True,
+    },
+    "checkphish": {
+        "name": "CheckPhish",
+        "description": "Real-time phishing and brand-impersonation detection powered by AI.",
+        "category": "Phishing & Malware",
+        "supported_query_types": ["search", "info", "scan"],
+        "rate_limits": "60 requests/minute",
+        "requires_key": True,
+    },
 }
 
 

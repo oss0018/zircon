@@ -70,7 +70,7 @@
   },
   "integrations": {
     "title": "OSINT Integrations",
-    "subtitle": "Manage API keys and query 13 OSINT services",
+    "subtitle": "Manage API keys and query 15 OSINT services",
     "addKey": "Add API Key",
     "removeKey": "Remove Key",
     "testConnection": "Test",
@@ -113,7 +113,9 @@
       "censys": "Censys",
       "securitytrails": "SecurityTrails",
       "abuseipdb": "AbuseIPDB",
-      "alienvault": "AlienVault OTX"
+      "alienvault": "AlienVault OTX",
+      "ctxio": "CTX.io",
+      "checkphish": "CheckPhish"
     },
     "serviceDescriptions": {
       "hibp": "Check if email addresses have been compromised in data breaches.",
@@ -128,7 +130,9 @@
       "censys": "Search internet-wide scan data for hosts and certificates.",
       "securitytrails": "Historical DNS records, WHOIS, and subdomain enumeration.",
       "abuseipdb": "IP reputation and abuse report database.",
-      "alienvault": "Open threat intelligence community with pulses and IOCs."
+      "alienvault": "Open threat intelligence community with pulses and IOCs.",
+      "ctxio": "Contextual threat intelligence for URLs, domains, and IPs.",
+      "checkphish": "Real-time phishing and brand-impersonation detection powered by AI."
     },
     "addNew": "Add Integration",
     "serviceName": "Service Name",
