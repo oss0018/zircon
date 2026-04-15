@@ -41,7 +41,7 @@ export default function IntegrationUsage({ configuredKeys }: IntegrationUsagePro
         ))}
       </div>
       <p className="text-xs mt-3" style={{ color: '#4a6080' }}>
-        {t('integrations.usage.queriesToday')}: <strong style={{ color: '#e0e8f0' }}>{configuredKeys.length}</strong>{' '}
+        <strong style={{ color: '#e0e8f0' }}>{configuredKeys.length}</strong>{' '}
         {t('integrations.usage.servicesConfigured')}
       </p>
     </div>

@@ -1,6 +1,5 @@
 """Censys OSINT integration."""
 
-import base64
 import httpx
 from typing import Any, Dict, Optional
 
