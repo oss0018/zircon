@@ -1,4 +1,11 @@
-"""OSINT Integration Registry — registers and manages all available integrations."""
+"""OSINT Integration Registry — registers and manages all available integrations.
+
+Registered services (15 total):
+  Breach & Leaks    (4): hibp, intelx, leakix, hudsonrock
+  Phishing & Malware(6): virustotal, urlhaus, phishtank, urlscan, ctxio, checkphish
+  Infrastructure    (3): shodan, censys, securitytrails
+  Threat Intel      (2): abuseipdb, alienvault
+"""
 
 from typing import Dict, List, Optional, Type
 
@@ -51,6 +58,8 @@ from app.integrations.censys import CensysIntegration  # noqa: E402
 from app.integrations.securitytrails import SecurityTrailsIntegration  # noqa: E402
 from app.integrations.abuseipdb import AbuseIPDBIntegration  # noqa: E402
 from app.integrations.alienvault import AlienVaultIntegration  # noqa: E402
+from app.integrations.ctxio import CTXioIntegration  # noqa: E402
+from app.integrations.checkphish import CheckPhishIntegration  # noqa: E402
 
 IntegrationRegistry.register("hibp", HIBPIntegration)
 IntegrationRegistry.register("intelx", IntelXIntegration)
@@ -65,6 +74,8 @@ IntegrationRegistry.register("censys", CensysIntegration)
 IntegrationRegistry.register("securitytrails", SecurityTrailsIntegration)
 IntegrationRegistry.register("abuseipdb", AbuseIPDBIntegration)
 IntegrationRegistry.register("alienvault", AlienVaultIntegration)
+IntegrationRegistry.register("ctxio", CTXioIntegration)
+IntegrationRegistry.register("checkphish", CheckPhishIntegration)
 
 __all__ = [
     "IntegrationRegistry",
@@ -81,4 +92,6 @@ __all__ = [
     "SecurityTrailsIntegration",
     "AbuseIPDBIntegration",
     "AlienVaultIntegration",
+    "CTXioIntegration",
+    "CheckPhishIntegration",
 ]

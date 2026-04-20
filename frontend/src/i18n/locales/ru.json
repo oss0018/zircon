@@ -70,7 +70,7 @@
   },
   "integrations": {
     "title": "OSINT-интеграции",
-    "subtitle": "Управление API-ключами и запросы к 13 OSINT-сервисам",
+    "subtitle": "Управление API-ключами и запросы к 15 OSINT-сервисам",
     "addKey": "Добавить API-ключ",
     "removeKey": "Удалить ключ",
     "testConnection": "Тест",
@@ -113,7 +113,9 @@
       "censys": "Censys",
       "securitytrails": "SecurityTrails",
       "abuseipdb": "AbuseIPDB",
-      "alienvault": "AlienVault OTX"
+      "alienvault": "AlienVault OTX",
+      "ctxio": "CTX.io",
+      "checkphish": "CheckPhish"
     },
     "serviceDescriptions": {
       "hibp": "Проверка email-адресов на наличие в утечках данных.",
@@ -128,7 +130,9 @@
       "censys": "Поиск по данным интернет-сканирования хостов и сертификатов.",
       "securitytrails": "Исторические DNS-записи, WHOIS и субдомены.",
       "abuseipdb": "База данных репутации IP-адресов и отчётов о злоупотреблениях.",
-      "alienvault": "Сообщество киберразведки с пульсами и IoC."
+      "alienvault": "Сообщество киберразведки с пульсами и IoC.",
+      "ctxio": "Контекстная threat-разведка для URL, доменов и IP-адресов.",
+      "checkphish": "Обнаружение фишинга и имитации бренда в реальном времени на основе ИИ."
     },
     "addNew": "Добавить интеграцию",
     "serviceName": "Название сервиса",
